@@ -1,0 +1,42 @@
+#include <stdio.h>
+int main(int argc, char const *argv[])
+{
+
+struct node
+{
+ int value;
+ struct node * ptr;
+};
+
+void enqueue(struct node * ptr1, struct node * ptr2){
+ /*enqueues ptr2 after ptr1*/
+ printf("enqueue...\n");
+ ptr1->ptr = ptr2;
+}
+void show(struct node * ptra){
+ /*shows a particular element of the queue*/
+ printf("\n%p\t", ptra);
+ printf("[%d\t", ptra->value);
+ printf("%p]\n", ptra->ptr);
+}
+void show_q(struct node * ptra){
+ /*shows all the elements of the queue*/
+ while(ptra != NULL){
+  show(ptra);
+  ptra=ptra->ptr;
+ }
+}
+ struct node a[50];
+ a->value=10;
+ a->ptr = NULL;
+ show(&a);
+ struct node b[50];
+ b->value=20;
+ b->ptr = NULL;
+ show(&b);
+ enqueue(&a,&b);
+ show(&a);
+ show(&b);
+ show_q(&a);
+ return 0;
+}
